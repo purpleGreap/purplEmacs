@@ -1,0 +1,384 @@
+
+* Emacs Settings
+
+** Functions
+
+*** Assign yes/no to y/n.
+#+BEGIN_SRC emacs-lisp
+  (defalias 'yes-or-no-p 'y-or-n-p)
+#+END_SRC
+
+*** Turn auto generation of backup file off.
+#+BEGIN_SRC emacs-lisp
+  (setq make-backup-files nil)
+#+END_SRC
+
+*** Turn auto save off.
+#+BEGIN_SRC emacs-lisp
+  (setq auto-sace-default nil)
+#+END_SRC
+
+*** Turn off the annoying bell.
+#+BEGIN_SRC emacs-lisp
+  (setq ring-bell-function 'ignore)
+#+END_SRC
+
+
+** Appearance
+
+*** Hide startup message.
+#+BEGIN_SRC emacs-lisp
+  (setq inhibit-startup-message t)
+#+END_SRC
+
+*** Hide tool bar.
+#+BEGIN_SRC emacs-lisp
+  (tool-bar-mode -1)
+#+END_SRC
+
+*** Hide menu bar.
+#+BEGIN_SRC emacs-lisp
+  (menu-bar-mode -1)
+#+END_SRC
+
+*** Hide scroll bar.
+#+BEGIN_SRC emacs-lisp
+  (scroll-bar-mode -1)
+#+END_SRC
+
+*** Split windows horizontally on startup.
+#+BEGIN_SRC emacs-lisp
+  (split-window-horizontally)
+#+END_SRC
+
+*** Maximize windows on startup.
+#+BEGIN_SRC emacs-lisp
+  (add-to-list 'default-frame-alist '(fullscreen . maximized))
+#+END_SRC
+
+*** Turn off blinking of the cursor.
+#+BEGIN_SRC emacs-lisp
+  (blink-cursor-mode -1)
+#+END_SRC
+
+
+** Keyboard-shortcuts
+
+*** Removing KBD Bindings.
+
+**** Used for moving between sentences.
+#+BEGIN_SRC emacs-lisp
+  (global-set-key (kbd "M-a") nil)
+#+END_SRC
+
+**** Used for 'other-window function.
+#+BEGIN_SRC emacs-lisp
+  (global-set-key (kbd "C-x o") nil)
+#+END_SRC
+
+*** Move to the indentation's starting point.
+#+BEGIN_SRC emacs-lisp
+  (global-set-key (kbd "M-a") 'back-to-indentation)
+#+END_SRC
+
+*** Compile using user commands.
+#+BEGIN_SRC emacs-lisp
+  (global-set-key (kbd "C-.") 'compile)
+#+END_SRC
+
+*** Recompile using previous ocmmands.
+#+BEGIN_SRC emacs-lisp
+  (global-set-key (kbd "C-,") 'recompile)
+#+END_SRC
+
+*** Loads ansi-terminal in current frame.
+#+BEGIN_SRC emacs-lisp
+  (global-set-key (kbd "C--") 'ansi-term)
+#+END_SRC
+
+*** Switch windows.
+#+BEGIN_SRC emacs-lisp
+  (global-set-key (kbd "C-;") 'other-window)
+#+END_SRC
+
+
+* Programming Settings
+
+** Functions
+
+
+** Appearance
+
+*** Convert text into symbol.
+#+BEGIN_SRC emacs-lisp
+  (when window-system (global-prettify-symbols-mode t))
+#+END_SRC
+
+*** Autocomplete symbols.
+#+BEGIN_SRC emacs-lisp
+(electric-pair-mode t)
+#+END_SRC
+
+*** Show matching pair of parenthesis.
+#+BEGIN_SRC emacs-lisp
+  (show-paren-mode t)
+#+END_SRC
+
+*** Remove the delay to show matching pair of parenthesis.
+#+BEGIN_SRC emacs-lisp
+  (setq show-paren-delay nil)
+#+END_SRC
+
+*** Highlight the line where the cursor lies.
+
+#+BEGIN_SRC emacs-lisp
+  (when window-system (global-hl-line-mode t))
+#+END_SRC
+
+*** Change the default font.
+#+BEGIN_SRC emacs-lisp
+  (set-default-font "Space Mono 10" nil t)
+#+END_SRC
+
+*** Change cursor's color.
+#+BEGIN_SRC emacs-lisp
+  (set-cursor-color "#ffffff")
+#+END_SRC
+
+
+** Keyboard-shortcuts
+
+
+* Ansi-Term
+
+** Functions
+
+*** Define path variable of bash.
+#+BEGIN_SRC emacs-lisp
+(defvar my-term-shell "/bin/bash")
+#+END_SRC
+
+*** Force ansi-term to open without prompt.
+#+BEGIN_SRC emacs-lisp
+  (defadvice ansi-term (before force-bash)
+    (interactive (list my-term-shell)))
+  (ad-activate 'ansi-term)
+#+END_SRC
+
+
+* Company
+
+** Functions
+
+*** Install company if not installed.
+#+BEGIN_SRC emacs-lisp
+  (use-package company :ensure t)
+#+END_SRC
+
+*** Start company with C, C++, Emacs-lisp, & Ansi-term.
+#+BEGIN_SRC emacs-lisp
+  (add-hook 'c++-mode-hook 'company-mode-on)
+  (add-hook 'c-mode-hook 'company-mode-on)
+  (add-hook 'emacs-lisp-mode-hook 'company-mode-on)
+  (add-hook 'term-mode-hook 'company-mode-on)
+#+END_SRC
+
+
+** Appearance
+
+*** Change the tooltip delay.
+#+BEGIN_SRC emacs-lisp
+  (setq company-idle-delay 0)
+#+END_SRC
+
+
+** Keyboard-shortcuts
+
+*** Remove the original company keybindings.
+
+**** Remove original 'company-select-next
+#+BEGIN_SRC emacs-lisp
+    (define-key company-active-map (kbd "M-n") nil)
+#+END_SRC
+
+**** Remove original 'company-select-previous
+#+BEGIN_SRC emacs-lisp
+    (define-key company-active-map (kbd "M-p") nil)
+#+END_SRC
+
+
+*** Select next option in the popup-menu.
+#+BEGIN_SRC emacs-lisp
+  (define-key company-active-map (kbd "C-n") #'company-select-next)
+#+END_SRC
+
+*** Select previous option in the popup-menu.
+#+BEGIN_SRC emacs-lisp
+  (define-key company-active-map (kbd "C-p") #'company-select-previous)
+#+END_SRC
+
+
+
+* Powerline-mode
+
+** Function
+
+*** Install powerline if not installed.
+#+BEGIN_SRC emacs-lisp
+  (use-package powerline :ensure t)
+#+END_SRC
+
+
+** Appearance
+
+*** Set the theme.
+#+BEGIN_SRC emacs-lisp
+  (powerline-default-theme)
+#+END_SRC
+
+
+* Elpy
+
+** Functions
+
+*** Enable elpy if not installed.
+#+BEGIN_SRC emacs-lisp
+  (use-package elpy :ensure t)
+#+END_SRC
+
+*** Enable elpy.
+#+BEGIN_SRC emacs-lisp
+  (elpy-enable)
+#+END_SRC
+
+*** Use python 3 for python's shell interpreter.
+#+BEGIN_SRC emacs-lisp
+  (setq python-shell-interpreter "python3")
+#+END_SRC
+
+*** Use python 3 for python command.
+#+BEGIN_SRC emacs-lisp
+  (setq elpy-rpc-python-command "python3")
+#+END_SRC
+
+
+* Helm
+
+** Functions
+
+*** Install helm if not installed.
+#+BEGIN_SRC emacs-lisp
+  (use-package helm :ensure t)
+#+END_SRC
+
+
+** Appearance
+
+*** Use helm in the window where it was called.
+#+BEGIN_SRC emacs-lisp
+  (setq helm-split-window-in-side-p t)
+#+END_SRC
+
+*** Autoresize helm's window.
+#+BEGIN_SRC emacs-lisp
+  (helm-autoresize-mode t)
+#+END_SRC
+
+
+** Keyboard-shortcuts
+
+*** Override buffer-list shortcut.
+#+BEGIN_SRC emacs-lisp
+  (global-set-key (kbd "C-x b") 'helm-buffers-list)
+#+END_SRC
+
+*** Create helm-bookmark shortcut.
+#+BEGIN_SRC emacs-lisp
+  (global-set-key (kbd "C-=") 'helm-bookmarks)
+#+END_SRC
+
+*** Override meta-x shortcut.
+#+BEGIN_SRC emacs-lisp
+  (global-set-key (kbd "M-x") 'helm-M-x)
+#+END_SRC
+
+*** Create helm-show-kill-ring shortcut.
+#+BEGIN_SRC emacs-lisp
+  (global-set-key (kbd "M-y") 'helm-show-kill-ring)
+#+END_SRC
+
+*** Override i-search with helm's search.
+#+BEGIN_SRC emacs-lisp
+  (global-set-key (kbd "C-s") 'helm-occur)
+#+END_SRC
+
+*** Override find-file shortcut.
+#+BEGIN_SRC emacs-lisp
+  (global-set-key (kbd "C-x C-f") 'helm-find-files)
+#+END_SRC
+
+*** Force completion with tab when finding files.
+#+BEGIN_SRC emacs-lisp
+(define-key helm-map (kbd "<tab>") 'helm-execute-persistent-action)
+#+END_SRC
+
+
+* Xscope
+
+** Functions
+
+*** Install xscope if not installed.
+#+BEGIN_SRC emacs-lisp
+  (use-package xcscope :ensure t)
+#+END_SRC
+
+
+** Keyboard-shortcuts
+
+*** Find the symbol.
+#+BEGIN_SRC emacs-lisp
+  (define-key global-map [(ctrl f5)] 'cscope-find-this-symbol)
+#+END_SRC
+
+*** Toggle cscope display buffer on/off.
+#+BEGIN_SRC emacs-lisp
+  (define-key global-map [(ctrl f1)] 'cscope-display-buffer-toggle) 
+#+END_SRC
+
+*** Display cscope buffer.
+#+BEGIN_SRC emacs-lisp
+  (define-key global-map [(ctrl f2)] 'cscope-display-buffer)
+#+END_SRC
+
+
+* Org
+
+** Functions
+
+*** Install org if not installed.
+#+BEGIN_SRC emacs-lisp
+  (use-package org :ensure t)
+#+END_SRC
+
+
+** Appearance
+
+*** Show the editing window in the current window.
+#+BEGIN_SRC emacs-lisp
+(setq org-src-window-setup 'current-window)
+#+END_SRC
+
+
+* Rainbow
+
+** Functions
+
+*** Install rainbow-mode if not installed.
+#+BEGIN_SRC emacs-lisp
+  (use-package rainbow-mode :ensure t)
+#+END_SRC
+
+*** Start rainbow with css file.
+#+BEGIN_SRC emacs-lisp
+  (add-hook 'css-mode-hook 'css-mode-on)
+#+END_SRC

@@ -1,0 +1,8 @@
+elpa/
+auto-save-list/
+eshell
+.gitignore~
+init.el~
+bookmarks
+#init.el#
+.#init.el
