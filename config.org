@@ -243,22 +243,22 @@
 
 *** Enable elpy if not installed.
 #+BEGIN_SRC emacs-lisp
-  (use-package elpy :ensure t)
+  ;(use-package elpy :ensure t)
 #+END_SRC
 
 *** Enable elpy.
 #+BEGIN_SRC emacs-lisp
-  (elpy-enable)
+  ;(elpy-enable)
 #+END_SRC
 
 *** Use python 3 for python's shell interpreter.
 #+BEGIN_SRC emacs-lisp
-  (setq python-shell-interpreter "python3")
+  ;(setq python-shell-interpreter "python3")
 #+END_SRC
 
 *** Use python 3 for python command.
 #+BEGIN_SRC emacs-lisp
-  (setq elpy-rpc-python-command "python3")
+  ;(setq elpy-rpc-python-command "python3")
 #+END_SRC
 
 

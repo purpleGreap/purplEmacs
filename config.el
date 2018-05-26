@@ -1,3 +1,4 @@
+
 (defalias 'yes-or-no-p 'y-or-n-p)
 
 (setq make-backup-files nil)
