@@ -50,72 +50,63 @@
 (set-cursor-color "#ffffff")
 
 (defvar my-term-shell "/bin/bash")
-
 (defadvice ansi-term (before force-bash)
   (interactive (list my-term-shell)))
 (ad-activate 'ansi-term)
 
-(use-package company :ensure t)
+(use-package company
+  :ensure t
+  :config
+  (setq company-idle-delay 0)
+  (define-key company-active-map (kbd "M-n") nil)
+  (define-key company-active-map (kbd "M-p") nil)
+  (define-key company-active-map (kbd "C-n") #'company-select-next)
+  (define-key company-active-map (kbd "C-p") #'company-select-previous)
+  :hook c++-mode-hook c-mode-hook emacs-lisp-mode-hook)
 
-(add-hook 'c++-mode-hook 'company-mode-on)
-(add-hook 'c-mode-hook 'company-mode-on)
-(add-hook 'emacs-lisp-mode-hook 'company-mode-on)
-(add-hook 'term-mode-hook 'company-mode-on)
+(use-package powerline
+  :ensure t
+  :config
+  (powerline-default-theme))
 
-(setq company-idle-delay 0)
+;(use-package elpy
+;  :ensure t
+;  :config
+;  (enable-elpy)
+;  (setq elpy-rpc-python-command "python3")
+;  :interpreter
+;  ("python3" . python-mode))
 
-(define-key company-active-map (kbd "M-n") nil)
+(use-package helm
+  :ensure t
+  :config
+  (setq helm-split-window-in-side-p t)
+  (helm-autoresize-mode t)
+  (define-key helm-map (kbd "<tab>") 'helm-execute-persistent-action)
+  :bind
+  ("C-x b" . helm-buffers-list)
+  ("C-=" . helm-bookmarks)
+  ("M-x" . helm-M-x)
+  ("M-y" . helm-show-kill-ring)
+  ("C-s" . helm-occur)
+  ("C-x C-f". helm-find-files))
 
-(define-key company-active-map (kbd "M-p") nil)
+(use-package xcscope
+  :ensure t
+  :bind (:map cscope-command-map
+              ("C-<f5>" . cscope-find-this-symbol)
+              ("C-<f1>" . cscope-display-buffer-toggle)
+              ("C-<f2>" . cscope-display-buffer)))
 
-(define-key company-active-map (kbd "C-n") #'company-select-next)
+(use-package org
+  :ensure t
+  :init 
+  (setq org-src-window-setup 'current-window))
 
-(define-key company-active-map (kbd "C-p") #'company-select-previous)
+(use-package rainbow-mode
+  :ensure t)
 
-(use-package powerline :ensure t)
-
-(powerline-default-theme)
-
-(use-package elpy :ensure t)
-
-(elpy-enable)
-
-(setq python-shell-interpreter "python3")
-
-(setq elpy-rpc-python-command "python3")
-
-(use-package helm :ensure t)
-
-(setq helm-split-window-in-side-p t)
-
-(helm-autoresize-mode t)
-
-(global-set-key (kbd "C-x b") 'helm-buffers-list)
-
-(global-set-key (kbd "C-=") 'helm-bookmarks)
-
-(global-set-key (kbd "M-x") 'helm-M-x)
-
-(global-set-key (kbd "M-y") 'helm-show-kill-ring)
-
-(global-set-key (kbd "C-s") 'helm-occur)
-
-(global-set-key (kbd "C-x C-f") 'helm-find-files)
-
-(define-key helm-map (kbd "<tab>") 'helm-execute-persistent-action)
-
-(use-package xcscope :ensure t)
-
-(define-key global-map [(ctrl f5)] 'cscope-find-this-symbol)
-
-(define-key global-map [(ctrl f1)] 'cscope-display-buffer-toggle)
-
-(define-key global-map [(ctrl f2)] 'cscope-display-buffer)
-
-(use-package org :ensure t)
-
-(setq org-src-window-setup 'current-window)
-
-(use-package rainbow-mode :ensure t)
-
-(add-hook 'css-mode-hook 'css-mode-on)
+(use-package avy
+  :ensure t
+  :bind
+  ("M-s" . avy-goto-char))
