@@ -17,12 +17,16 @@ Clone this repository to the `.emacs.d` file directory on the home directory. Af
 
 ## Packages Used
 
+- [Avy](https://github.com/purpleGreap/purplEmacs/blob/master/config.org#avy)
 - [Company](https://github.com/purpleGreap/purplEmacs/blob/master/config.org#company)
-- [Powerline](https://github.com/purpleGreap/purplEmacs/blob/master/config.org#powerline-mode)
 - [Elpy](https://github.com/purpleGreap/purplEmacs/blob/master/config.org#elpy)
 - [Helm](https://github.com/purpleGreap/purplEmacs/blob/master/config.org#helm)
-- [Xscope](https://github.com/purpleGreap/purplEmacs/blob/master/config.org#xscope)
-- [Rainbow](https://github.com/purpleGreap/purplEmacs/blob/master/config.org#rainbow)
+- [Mark-Multiple](https://github.com/purpleGreap/purplEmacs/blob/master/config.org#company)
 - [Org](https://github.com/purpleGreap/purplEmacs/blob/master/config.org#org)
+- [Powerline](https://github.com/purpleGreap/purplEmacs/blob/master/config.org#powerline-mode)
+- [Rainbow](https://github.com/purpleGreap/purplEmacs/blob/master/config.org#rainbow)
+- [Xscope](https://github.com/purpleGreap/purplEmacs/blob/master/config.org#xscope)
+
+
 
 ## ¯\_(ツ)_/¯ Enjoy !
