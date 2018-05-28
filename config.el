@@ -5,6 +5,8 @@
 
 (setq auto-sace-default nil)
 
+(setq ring-bell-function 'ignore)
+
 (defun kill-whole-word ()
   (interactive)
   (backward-word)

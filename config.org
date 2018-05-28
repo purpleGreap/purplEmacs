@@ -20,7 +20,7 @@
 *** Turn off the annoying bell.
 #+BEGIN_SRC emacs-lisp
   (setq ring-bell-function 'ignore)
-#+END_SRC*** 
+#+END_SRC
 
 *** Kill a WHOLE word.
 #+BEGIN_SRC emacs-lisp
