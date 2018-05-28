@@ -118,6 +118,11 @@
   (setq org-src-window-setup 'current-window)
   (add-hook 'org-mode-hook 'org-indent-mode))
 
+(use-package org-bullets
+  :ensure t
+  :config
+  (add-hook 'org-mode-hook '(lambda () (org-bullets-mode))))
+
 (use-package powerline
   :ensure t
   :config

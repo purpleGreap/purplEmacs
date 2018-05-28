@@ -274,11 +274,16 @@
 - Source window shows in the current window.
 
 #+BEGIN_SRC emacs-lisp
-    (use-package org
-      :ensure t
-      :init 
-      (setq org-src-window-setup 'current-window)
-      (add-hook 'org-mode-hook 'org-indent-mode))
+  (use-package org
+    :ensure t
+    :init 
+    (setq org-src-window-setup 'current-window)
+    (add-hook 'org-mode-hook 'org-indent-mode))
+
+  (use-package org-bullets
+    :ensure t
+    :config
+    (add-hook 'org-mode-hook '(lambda () (org-bullets-mode))))
 #+END_SRC
     
 * Powerline-mode
@@ -317,4 +322,3 @@
     ("C-<f1>" . cscope-display-buffer-toggle)
     ("C-<f2>" . cscope-display-buffer))
 #+END_SRC
-
