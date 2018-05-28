@@ -5,7 +5,10 @@
 
 (setq auto-sace-default nil)
 
-(setq ring-bell-function 'ignore)
+(defun kill-whole-word ()
+  (interactive)
+  (backward-word)
+  (kill-word 1))
 
 (setq inhibit-startup-message t)
 
@@ -25,6 +28,9 @@
 
 (global-set-key (kbd "C-x o") nil)
 
+(global-set-key (kbd "M-d") nil)
+(global-set-key (kbd "C-<backspace>") nil)
+
 (global-set-key (kbd "M-a") 'back-to-indentation)
 
 (global-set-key (kbd "C-.") 'compile)
@@ -35,7 +41,10 @@
 
 (global-set-key (kbd "C-;") 'other-window)
 
-(when window-system (global-prettify-symbols-mode t))
+(global-set-key (kbd "M-d") 'kill-whole-word)
+
+(add-hook 'c-mode-hook 'subword-mode)
+(add-hook 'c++-mode-hook 'subword-mode)
 
 (electric-pair-mode t)
 
@@ -54,30 +63,30 @@
   (interactive (list my-term-shell)))
 (ad-activate 'ansi-term)
 
+(use-package avy
+  :ensure t
+  :bind
+  ("M-s" . avy-goto-char))
+
 (use-package company
   :ensure t
+  :init
+  (add-hook 'emacs-lisp-mode-hook 'company-mode)
+  (add-hook 'c-mode-hook 'company-mode)
+  (add-hook 'c++-mode-hook 'company-mode)
   :config
   (setq company-idle-delay 0)
   (define-key company-active-map (kbd "M-n") nil)
   (define-key company-active-map (kbd "M-p") nil)
   (define-key company-active-map (kbd "C-n") #'company-select-next)
-  (define-key company-active-map (kbd "C-p") #'company-select-previous)
-  (add-hook 'emacs-lisp-mode-hook 'company-mode)
-  (add-hook 'c-mode-hook 'company-mode)
-  (add-hook 'c++-mode-hook 'company-mode))
-
-(use-package powerline
-  :ensure t
-  :config
-  (powerline-default-theme))
+  (define-key company-active-map (kbd "C-p") #'company-select-previous))
 
 ;(use-package elpy
 ;  :ensure t
 ;  :config
 ;  (enable-elpy)
 ;  (setq elpy-rpc-python-command "python3")
-;  :interpreter
-;  ("python3" . python-mode))
+;  (setq python-shell-interpreter "python3")
 
 (use-package helm
   :ensure t
@@ -92,22 +101,32 @@
   (global-set-key (kbd "C-s") 'helm-occur)
   (global-set-key (kbd "C-x C-f") 'helm-find-files))
 
-(use-package xcscope
+(use-package helm-cscope
+  :ensure t
+  )
+
+(use-package mark-multiple
   :ensure t
   :bind
-  ("<f5>" . cscope-find-this-symbol)
-  ("C-<f1>" . cscope-display-buffer-toggle)
-  ("C-<f2>" . cscope-display-buffer))
+  ("C-'" . 'mark-next-like-this))
 
 (use-package org
   :ensure t
   :init 
-  (setq org-src-window-setup 'current-window))
+  (setq org-src-window-setup 'current-window)
+  (add-hook 'org-mode-hook 'org-indent-mode))
+
+(use-package powerline
+  :ensure t
+  :config
+  (powerline-default-theme))
 
 (use-package rainbow-mode
   :ensure t)
 
-(use-package avy
+(use-package xcscope
   :ensure t
   :bind
-  ("M-s" . avy-goto-char))
+  ("C-<f5>" . cscope-find-this-symbol)
+  ("C-<f1>" . cscope-display-buffer-toggle)
+  ("C-<f2>" . cscope-display-buffer))
