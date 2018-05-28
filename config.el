@@ -62,7 +62,9 @@
   (define-key company-active-map (kbd "M-p") nil)
   (define-key company-active-map (kbd "C-n") #'company-select-next)
   (define-key company-active-map (kbd "C-p") #'company-select-previous)
-  :hook c++-mode-hook c-mode-hook emacs-lisp-mode-hook)
+  (add-hook 'emacs-lisp-mode-hook 'company-mode)
+  (add-hook 'c-mode-hook 'company-mode)
+  (add-hook 'c++-mode-hook 'company-mode))
 
 (use-package powerline
   :ensure t
@@ -83,20 +85,19 @@
   (setq helm-split-window-in-side-p t)
   (helm-autoresize-mode t)
   (define-key helm-map (kbd "<tab>") 'helm-execute-persistent-action)
-  :bind
-  ("C-x b" . helm-buffers-list)
-  ("C-=" . helm-bookmarks)
-  ("M-x" . helm-M-x)
-  ("M-y" . helm-show-kill-ring)
-  ("C-s" . helm-occur)
-  ("C-x C-f". helm-find-files))
+  (global-set-key (kbd "C-x b") 'helm-buffers-list)
+  (global-set-key (kbd "C-=") 'helm-bookmarks)
+  (global-set-key (kbd "M-x") 'helm-M-x)
+  (global-set-key (kbd "M-y") 'helm-show-kill-ring)
+  (global-set-key (kbd "C-s") 'helm-occur)
+  (global-set-key (kbd "C-x C-f") 'helm-find-files))
 
 (use-package xcscope
   :ensure t
-  :bind (:map cscope-command-map
-              ("C-<f5>" . cscope-find-this-symbol)
-              ("C-<f1>" . cscope-display-buffer-toggle)
-              ("C-<f2>" . cscope-display-buffer)))
+  :bind
+  ("<f5>" . cscope-find-this-symbol)
+  ("C-<f1>" . cscope-display-buffer-toggle)
+  ("C-<f2>" . cscope-display-buffer))
 
 (use-package org
   :ensure t
