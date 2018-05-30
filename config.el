@@ -54,7 +54,7 @@
 
 (setq show-paren-delay nil)
 
-(when window-system (global-hl-line-mode t))
+;(when window-system (global-hl-line-mode t))
 
 (set-default-font "Space Mono 10" nil t)
 
@@ -76,6 +76,7 @@
   (add-hook 'emacs-lisp-mode-hook 'company-mode)
   (add-hook 'c-mode-hook 'company-mode)
   (add-hook 'c++-mode-hook 'company-mode)
+
   :config
   (setq company-idle-delay 0)
   (define-key company-active-map (kbd "M-n") nil)
@@ -96,6 +97,7 @@
   (setq helm-split-window-in-side-p t)
   (helm-autoresize-mode t)
   (define-key helm-map (kbd "<tab>") 'helm-execute-persistent-action)
+  (define-key helm-map (kbd "M-<backspace>") 'helm-find-files-up-one-level)
   (global-set-key (kbd "C-x b") 'helm-buffers-list)
   (global-set-key (kbd "C-=") 'helm-bookmarks)
   (global-set-key (kbd "M-x") 'helm-M-x)
@@ -126,10 +128,13 @@
 (use-package powerline
   :ensure t
   :config
-  (powerline-default-theme))
+  (powerline-center-theme))
 
 (use-package rainbow-mode
-  :ensure t)
+  :ensure t
+  :config
+  (add-hook 'emacs-lisp-mode-hook 'rainbow-mode)
+  (add-hook 'css-mode-hook 'rainbow-mode))
 
 (use-package xcscope
   :ensure t

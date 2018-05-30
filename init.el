@@ -2,6 +2,11 @@
 ;;START
 ;;--------------------
 
+;; Turn off mouse interface early in startup to avoid momentary display
+(if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
+(if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
+(if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
+
 ;; Start package.el with emacs
 (require 'package)
 
@@ -19,10 +24,9 @@
   (package-refresh-contents)
   (package-install 'use-package))
 
-;; Installs klere theme if not installed
-(unless (package-installed-p 'klere-theme)
-  (package-refresh-contents)
-  (package-install 'klere-theme))
+;; Loads klere theme on startup
+(add-to-list 'custom-theme-load-path "~/.emacs.d/")
+(load-theme 'klere t)
 
 ;; Keep emacs Custom-settings in separate file
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
