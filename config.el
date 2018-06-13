@@ -142,3 +142,8 @@
   ("C-<f5>" . cscope-find-this-symbol)
   ("C-<f1>" . cscope-display-buffer-toggle)
   ("C-<f2>" . cscope-display-buffer))
+
+(use-package flycheck
+  :ensure t
+  :config
+  (setq flycheck-display-errors-delay 0))

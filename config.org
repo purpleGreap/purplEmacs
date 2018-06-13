@@ -327,3 +327,13 @@
     ("C-<f1>" . cscope-display-buffer-toggle)
     ("C-<f2>" . cscope-display-buffer))
 #+END_SRC
+
+* Fly
+
+** Used for checking syntax errors.
+#+BEGIN_SRC emacs-lisp
+  (use-package flycheck
+    :ensure t
+    :config
+    (setq flycheck-display-errors-delay 0))
+#+END_SRC
