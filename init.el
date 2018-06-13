@@ -19,14 +19,16 @@
 ;; Makes sure all the packages are loaded
 (package-initialize)
 
-;; Install use-package to simplify code. 
+;; Install spacemacs theme
+(unless (package-installed-p 'spacemacs-theme)
+  (package-refresh-contents)
+  (package-install 'spacemacs-theme))
+(load-theme 'spacemacs-dark t)
+
+;; Install use-package to simplify code
 (unless (package-installed-p 'use-package)
   (package-refresh-contents)
   (package-install 'use-package))
-
-;; Loads klere theme on startup
-(add-to-list 'custom-theme-load-path "~/.emacs.d/")
-(load-theme 'klere t)
 
 ;; Keep emacs Custom-settings in separate file
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))

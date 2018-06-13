@@ -58,8 +58,6 @@
 
 (set-default-font "Space Mono 10" nil t)
 
-(set-cursor-color "#ffffff")
-
 (defvar my-term-shell "/bin/bash")
 (defadvice ansi-term (before force-bash)
   (interactive (list my-term-shell)))

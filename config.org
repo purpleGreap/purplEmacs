@@ -161,11 +161,6 @@
   (set-default-font "Space Mono 10" nil t)
 #+END_SRC
 
-*** Change cursor's color.
-#+BEGIN_SRC emacs-lisp
-  (set-cursor-color "#ffffff")
-#+END_SRC
-
 
 * Ansi-Term
 
@@ -310,10 +305,9 @@
         (add-hook 'emacs-lisp-mode-hook 'rainbow-mode)
         (add-hook 'css-mode-hook 'rainbow-mode))
 #+End_SRC 
+* Spaceline  
 
-* Spaceline
-
-** Spaceline-powerline theme.
+** Modeline theme.
 #+BEGIN_SRC emacs-lisp
   (use-package spaceline
     :ensure t
@@ -323,7 +317,6 @@
     (spaceline-helm-mode)
     (setq powerline-default-separator 'wave)
     (spaceline-compile))
-
 #+END_SRC
 * Xscope
 
