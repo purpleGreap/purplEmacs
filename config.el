@@ -54,7 +54,7 @@
 
 (setq show-paren-delay nil)
 
-;(when window-system (global-hl-line-mode t))
+(when window-system (global-hl-line-mode t))
 
 (set-default-font "Space Mono 10" nil t)
 
@@ -91,6 +91,11 @@
 ;  (setq elpy-rpc-python-command "python3")
 ;  (setq python-shell-interpreter "python3")
 
+(use-package flycheck
+  :ensure t
+  :config
+  (setq flycheck-display-errors-delay 0))
+
 (use-package helm
   :ensure t
   :config
@@ -125,16 +130,20 @@
   :config
   (add-hook 'org-mode-hook '(lambda () (org-bullets-mode))))
 
-(use-package powerline
-  :ensure t
-  :config
-  (powerline-center-theme))
-
 (use-package rainbow-mode
   :ensure t
   :config
   (add-hook 'emacs-lisp-mode-hook 'rainbow-mode)
   (add-hook 'css-mode-hook 'rainbow-mode))
+
+(use-package spaceline
+  :ensure t
+  :config
+  (require 'spaceline-config)
+  (spaceline-spacemacs-theme)
+  (spaceline-helm-mode)
+  (setq powerline-default-separator 'wave)
+  (spaceline-compile))
 
 (use-package xcscope
   :ensure t
@@ -142,8 +151,3 @@
   ("C-<f5>" . cscope-find-this-symbol)
   ("C-<f1>" . cscope-display-buffer-toggle)
   ("C-<f2>" . cscope-display-buffer))
-
-(use-package flycheck
-  :ensure t
-  :config
-  (setq flycheck-display-errors-delay 0))

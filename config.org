@@ -153,7 +153,7 @@
 *** Highlight the line where the cursor lies.
 
 #+BEGIN_SRC emacs-lisp
- ;(when window-system (global-hl-line-mode t))
+  (when window-system (global-hl-line-mode t))
 #+END_SRC
 
 *** Change the default font.
@@ -229,6 +229,15 @@
   ;  (setq python-shell-interpreter "python3")
 #+END_SRC
 
+* Fly
+
+** Used for checking syntax errors.
+#+BEGIN_SRC emacs-lisp
+  (use-package flycheck
+    :ensure t
+    :config
+    (setq flycheck-display-errors-delay 0))
+#+END_SRC
 * Helm
 
 ** Used for showing suggestions in a popup box.
@@ -288,19 +297,6 @@
     (add-hook 'org-mode-hook '(lambda () (org-bullets-mode))))
 #+END_SRC
     
-* Powerline-mode
-
-** Makes the status-bar look cool.
-
-- Uses the default theme.
-
-#+BEGIN_SRC emacs-lisp
-  (use-package powerline
-    :ensure t
-    :config
-    (powerline-center-theme))
-#+END_SRC
-
 * Rainbow
 
 ** A minor mode which shows color of the regular/hexadecimal text.
@@ -315,6 +311,20 @@
         (add-hook 'css-mode-hook 'rainbow-mode))
 #+End_SRC 
 
+* Spaceline
+
+** Spaceline-powerline theme.
+#+BEGIN_SRC emacs-lisp
+  (use-package spaceline
+    :ensure t
+    :config
+    (require 'spaceline-config)
+    (spaceline-spacemacs-theme)
+    (spaceline-helm-mode)
+    (setq powerline-default-separator 'wave)
+    (spaceline-compile))
+
+#+END_SRC
 * Xscope
 
 ** For navigation of source code and it's implementation.
@@ -328,12 +338,3 @@
     ("C-<f2>" . cscope-display-buffer))
 #+END_SRC
 
-* Fly
-
-** Used for checking syntax errors.
-#+BEGIN_SRC emacs-lisp
-  (use-package flycheck
-    :ensure t
-    :config
-    (setq flycheck-display-errors-delay 0))
-#+END_SRC
