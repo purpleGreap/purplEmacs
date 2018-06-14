@@ -91,6 +91,9 @@
 
 (use-package flycheck
   :ensure t
+  :init
+  (add-hook 'c-mode-hook 'flycheck-mode)
+  (add-hook 'c++-mode-hook 'flycheck-mode)
   :config
   (setq flycheck-display-errors-delay 0))
 
