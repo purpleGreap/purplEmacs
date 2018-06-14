@@ -20,11 +20,12 @@ Clone this repository to the `.emacs.d` file directory on the home directory. Af
 - [Avy](https://github.com/purpleGreap/purplEmacs/blob/master/config.org#avy)
 - [Company](https://github.com/purpleGreap/purplEmacs/blob/master/config.org#company)
 - [Elpy](https://github.com/purpleGreap/purplEmacs/blob/master/config.org#elpy)
+- [Fly](https://github.com/purpleGreap/purplEmacs/blob/master/config.org#fly)
 - [Helm](https://github.com/purpleGreap/purplEmacs/blob/master/config.org#helm)
 - [Mark-Multiple](https://github.com/purpleGreap/purplEmacs/blob/master/config.org#company)
 - [Org](https://github.com/purpleGreap/purplEmacs/blob/master/config.org#org)
-- [Powerline](https://github.com/purpleGreap/purplEmacs/blob/master/config.org#powerline-mode)
 - [Rainbow](https://github.com/purpleGreap/purplEmacs/blob/master/config.org#rainbow)
+- [Spaceline](https://github.com/purpleGreap/purplEmacs/blob/master/config.org#spaceline-mode)
 - [Xscope](https://github.com/purpleGreap/purplEmacs/blob/master/config.org#xscope)
 
 
