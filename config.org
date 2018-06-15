@@ -74,11 +74,6 @@
 
 *** Removing KBD Bindings.
 
-**** Used for moving between sentences.
-#+BEGIN_SRC emacs-lisp
-  (global-set-key (kbd "M-a") nil)
-#+END_SRC
-
 **** Used for 'other-window function.
 #+BEGIN_SRC emacs-lisp
   (global-set-key (kbd "C-x o") nil)
@@ -90,21 +85,6 @@
   (global-set-key (kbd "C-<backspace>") nil)
 #+END_SRC
  
-
-*** Move to the indentation's starting point.
-#+BEGIN_SRC emacs-lisp
-  (global-set-key (kbd "M-a") 'back-to-indentation)
-#+END_SRC
-
-*** Compile using user commands.
-#+BEGIN_SRC emacs-lisp
-  (global-set-key (kbd "C-.") 'compile)
-#+END_SRC
-
-*** Recompile using previous ocmmands.
-#+BEGIN_SRC emacs-lisp
-  (global-set-key (kbd "C-,") 'recompile)
-#+END_SRC
 
 *** Loads ansi-terminal in current frame.
 #+BEGIN_SRC emacs-lisp
@@ -162,6 +142,40 @@
 #+END_SRC
 
 
+** Keyboard-shortcuts
+
+*** Removing KBD Bindings.
+
+**** Used for moving between sentences.
+#+BEGIN_SRC emacs-lisp
+  (global-set-key (kbd "M-a") nil)
+#+END_SRC
+ 
+
+*** Move to the indentation's starting point.
+#+BEGIN_SRC emacs-lisp
+  (global-set-key (kbd "M-a") 'back-to-indentation)
+#+END_SRC
+
+*** Compile using user commands.
+#+BEGIN_SRC emacs-lisp
+  (global-set-key (kbd "C-.") 'compile)
+#+END_SRC
+
+*** Recompile using previous ocmmands.
+#+BEGIN_SRC emacs-lisp
+  (global-set-key (kbd "C-,") 'recompile)
+#+END_SRC
+
+*** Automatic indentation
+#+BEGIN_SRC emacs-lisp
+  (defun programming-kbd-config ()
+  (global-set-key (kbd "RET") 'newline-and-indent))
+
+  (add-hook 'c-mode-hook 'programming-kbd-config)
+#+END_SRC
+
+
 * Ansi-Term
 
 ** Ansi-Term is kind of similar to the regular terminal.
@@ -206,7 +220,8 @@
     (define-key company-active-map (kbd "M-n") nil)
     (define-key company-active-map (kbd "M-p") nil)
     (define-key company-active-map (kbd "C-n") #'company-select-next)
-    (define-key company-active-map (kbd "C-p") #'company-select-previous))
+    (define-key company-active-map (kbd "C-p") #'company-select-previous)
+    (setq company-clang-executable "/usr/bin/clang-6.0"))
 #+END_SRC
 
 * Elpy
