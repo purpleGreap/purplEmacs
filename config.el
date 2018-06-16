@@ -26,18 +26,10 @@
 
 (blink-cursor-mode -1)
 
-(global-set-key (kbd "M-a") nil)
-
 (global-set-key (kbd "C-x o") nil)
 
 (global-set-key (kbd "M-d") nil)
 (global-set-key (kbd "C-<backspace>") nil)
-
-(global-set-key (kbd "M-a") 'back-to-indentation)
-
-(global-set-key (kbd "C-.") 'compile)
-
-(global-set-key (kbd "C-,") 'recompile)
 
 (global-set-key (kbd "C--") 'ansi-term)
 
@@ -57,6 +49,19 @@
 (when window-system (global-hl-line-mode t))
 
 (set-default-font "Space Mono 10" nil t)
+
+(global-set-key (kbd "M-a") nil)
+
+(global-set-key (kbd "M-a") 'back-to-indentation)
+
+(global-set-key (kbd "C-.") 'compile)
+
+(global-set-key (kbd "C-,") 'recompile)
+
+(defun programming-kbd-config ()
+(global-set-key (kbd "RET") 'newline-and-indent))
+
+(add-hook 'c-mode-hook 'programming-kbd-config)
 
 (defvar my-term-shell "/bin/bash")
 (defadvice ansi-term (before force-bash)
@@ -80,7 +85,8 @@
   (define-key company-active-map (kbd "M-n") nil)
   (define-key company-active-map (kbd "M-p") nil)
   (define-key company-active-map (kbd "C-n") #'company-select-next)
-  (define-key company-active-map (kbd "C-p") #'company-select-previous))
+  (define-key company-active-map (kbd "C-p") #'company-select-previous)
+  (setq company-clang-executable "/usr/bin/clang-6.0"))
 
 ;(use-package elpy
 ;  :ensure t
