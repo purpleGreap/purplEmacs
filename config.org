@@ -84,10 +84,10 @@
   (global-set-key (kbd "M-d") nil)
   (global-set-key (kbd "C-<backspace>") nil)
 #+END_SRC
- 
+
 **** Used for changing input method
 #+BEGIN_SRC emacs-lisp
-  (global-set-key (kbd "C-\\") nil)
+  (global-set-key (kbd "C-0") nil)
 #+END_SRC
 
 *** Loads ansi-terminal in current frame.
@@ -107,7 +107,9 @@
 
 *** Switch buffers.
 #+BEGIN_SRC emacs-lisp
-  (global-set-key (kbd "C-\\") 'switch-to-next-buffer)
+  (global-set-key (kbd "C-0") 'switch-to-next-buffer)
+  (global-set-key (kbd "C-M-0") 'switch-to-prev-buffer)
+
 #+END_SRC
 
 * Tweaks for Programming.

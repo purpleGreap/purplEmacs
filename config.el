@@ -31,11 +31,16 @@
 (global-set-key (kbd "M-d") nil)
 (global-set-key (kbd "C-<backspace>") nil)
 
+(global-set-key (kbd "C-0") nil)
+
 (global-set-key (kbd "C--") 'ansi-term)
 
 (global-set-key (kbd "C-;") 'other-window)
 
 (global-set-key (kbd "M-d") 'kill-whole-word)
+
+(global-set-key (kbd "C-0") 'switch-to-next-buffer)
+(global-set-key (kbd "C-M-0") 'switch-to-prev-buffer)
 
 (add-hook 'c-mode-hook 'subword-mode)
 (add-hook 'c++-mode-hook 'subword-mode)
