@@ -29,8 +29,8 @@
 (load custom-file)
 
 ;; Install custom theme
-(add-to-list 'custom-theme-load-path "~/.emacs.d/")
-(load-theme 'adwaita t)
+;(add-to-list 'custom-theme-load-path "~/.emacs.d/")
+;(load-theme 'adwaita t)
 
 ;; Use snippets from config.org
 (org-babel-load-file (expand-file-name "~/.emacs.d/config.org"))
