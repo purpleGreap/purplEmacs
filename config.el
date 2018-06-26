@@ -20,7 +20,7 @@
 
 (scroll-bar-mode -1)
 
-(split-window-horizontally)
+;(split-window-horizontally)
 
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
 
@@ -77,6 +77,15 @@
   :ensure t
   :bind
   ("M-s" . avy-goto-char))
+
+(use-package circadian
+  :ensure t
+  :config
+  (setq calendar-latitude 27.0)
+  (setq calendar-longitude 85.0)
+  (setq circadian-themes '((:sunrise . adwaita)
+                           (:sunset  . ample)))
+  (circadian-setup))
 
 (use-package company
   :ensure t
