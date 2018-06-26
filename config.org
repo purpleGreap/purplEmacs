@@ -56,7 +56,7 @@
 
 *** Split windows horizontally on startup.
 #+BEGIN_SRC emacs-lisp
-  (split-window-horizontally)
+ ;(split-window-horizontally)
 #+END_SRC
 
 *** Maximize windows on startup.
@@ -111,6 +111,7 @@
   (global-set-key (kbd "C-M-0") 'switch-to-prev-buffer)
 
 #+END_SRC
+
 
 * Tweaks for Programming.
 
@@ -208,6 +209,20 @@
     :ensure t
     :bind
     ("M-s" . avy-goto-char))
+#+END_SRC
+
+* Circadian
+
+** Changes theme based on sunset and sunrise.
+#+BEGIN_SRC emacs-lisp
+  (use-package circadian
+    :ensure t
+    :config
+    (setq calendar-latitude 27.0)
+    (setq calendar-longitude 85.0)
+    (setq circadian-themes '((:sunrise . adwaita)
+                             (:sunset  . ample)))
+    (circadian-setup))
 #+END_SRC
 
 * Company
