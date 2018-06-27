@@ -113,7 +113,7 @@
    `(powerline-inactive1 ((t (:background ,ample/bg :foreground "cornsilk4"))))
    `(powerline-inactive2 ((t (:background ,ample/darker-gray :foreground "cornsilk4" ))))
    `(mode-line-inactive  ((t (:background ,ample/darker-gray :foreground "cornsilk4"))))
-   `(mode-line           ((t (:background "cornsilk4" :foreground ,ample/darkest-gray))))
+   `(mode-line           ((t (:background ,ample/darker-gray :foreground "cornsilk"))))
 
    `(linum ((t (:background nil :foreground ,ample/gray))))
 
@@ -302,7 +302,7 @@
    `(helm-grep-lineno			((t (:inherit compilation-line-number))))
    ;;`(helm-grep-match			((t ())))
    ;;`(helm-grep-running		((t ())))
-   `(helm-header			((t (:foreground ,ample/bg :background ,ample/fg))))
+   `(helm-header			((t (:foreground ,ample/fg :background ,ample/darker-gray))))
    ;;`(helm-helper			((t ())))
    ;;`(helm-history-deleted		((t ())))
    ;;`(helm-history-remote		((t ())))
@@ -374,8 +374,8 @@
    ;;`(company-template-field		((t (:foreground "black" :background "orange"))))
    `(company-scrollbar-bg               ((t (:foreground nil :background ,ample/darkest-gray))))
    `(company-scrollbar-fg               ((t (:foreground nil :background ,ample/dark-gray))))
-   `(company-tooltip			((t (:foreground ,ample/bg :background ,ample/fg))))
-   `(company-tooltip-common		((t (:foreground ,ample/blue :background ,ample/fg))))
+   `(company-tooltip			((t (:foreground ,ample/fg :background ,ample/bg))))
+   `(company-tooltip-common		((t (:foreground ,ample/blue :background ,ample/bg))))
    `(company-tooltip-common-selection	((t (:foreground ,ample/bg :background ,ample/blue))))
    `(company-tooltip-mouse		((t (:foreground nil :background ,ample/light-blue))))
    `(company-tooltip-selection		((t (:foreground ,ample/fg :background ,ample/blue))))
