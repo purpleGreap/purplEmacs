@@ -144,12 +144,12 @@
 *** Highlight the line where the cursor lies.
 
 #+BEGIN_SRC emacs-lisp
-  (when window-system (global-hl-line-mode t))
+  (add-hook 'c-mode-hook 'c++-mode-hook (lambda () (hl-line-mode 0)))
 #+END_SRC
 
 *** Change the default font.
 #+BEGIN_SRC emacs-lisp
-  (set-default-font "Space Mono 10" nil t)
+  (set-frame-font "Space Mono 10" nil t)
 #+END_SRC
 
 
@@ -275,6 +275,7 @@
     :config
     (setq flycheck-display-errors-delay 0))
 #+END_SRC
+
 * Helm
 
 ** Used for showing suggestions in a popup box.
@@ -287,7 +288,7 @@
   (use-package helm
     :ensure t
     :config
-    (setq helm-split-window-in-side-p t)
+    (setq helm-split-window-inside-p t)
     (helm-autoresize-mode t)
     (define-key helm-map (kbd "<tab>") 'helm-execute-persistent-action)
     (define-key helm-map (kbd "M-<backspace>") 'helm-find-files-up-one-level)
@@ -348,20 +349,6 @@
         (add-hook 'css-mode-hook 'rainbow-mode))
 #+End_SRC
  
-* Spaceline  
-
-** Modeline theme.
-#+BEGIN_SRC emacs-lisp
-  (use-package spaceline
-    :ensure t
-    :config
-    (require 'spaceline-config)
-    (spaceline-spacemacs-theme)
-    (spaceline-helm-mode)
-    (setq powerline-default-separator 'wave)
-    (spaceline-compile))
-#+END_SRC
-
 * Xscope
 
 ** For navigation of source code and it's implementation.

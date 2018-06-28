@@ -51,9 +51,9 @@
 
 (setq show-paren-delay nil)
 
-(when window-system (global-hl-line-mode t))
+(add-hook 'c-mode-hook 'c++-mode-hook (lambda () (hl-line-mode 0)))
 
-(set-default-font "Space Mono 10" nil t)
+(set-frame-font "Space Mono 10" nil t)
 
 (global-set-key (kbd "M-a") nil)
 
@@ -119,7 +119,7 @@
 (use-package helm
   :ensure t
   :config
-  (setq helm-split-window-in-side-p t)
+  (setq helm-split-window-inside-p t)
   (helm-autoresize-mode t)
   (define-key helm-map (kbd "<tab>") 'helm-execute-persistent-action)
   (define-key helm-map (kbd "M-<backspace>") 'helm-find-files-up-one-level)
@@ -155,15 +155,6 @@
   :config
   (add-hook 'emacs-lisp-mode-hook 'rainbow-mode)
   (add-hook 'css-mode-hook 'rainbow-mode))
-
-(use-package spaceline
-  :ensure t
-  :config
-  (require 'spaceline-config)
-  (spaceline-spacemacs-theme)
-  (spaceline-helm-mode)
-  (setq powerline-default-separator 'wave)
-  (spaceline-compile))
 
 (use-package xcscope
   :ensure t
