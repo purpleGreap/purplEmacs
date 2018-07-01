@@ -39,21 +39,6 @@
   (setq inhibit-startup-message t)
 #+END_SRC
 
-*** Hide tool bar.
-#+BEGIN_SRC emacs-lisp
-  (tool-bar-mode -1)
-#+END_SRC
-
-*** Hide menu bar.
-#+BEGIN_SRC emacs-lisp
-  (menu-bar-mode -1)
-#+END_SRC
-
-*** Hide scroll bar.
-#+BEGIN_SRC emacs-lisp
-  (scroll-bar-mode -1)
-#+END_SRC
-
 *** Split windows horizontally on startup.
 #+BEGIN_SRC emacs-lisp
  ;(split-window-horizontally)
@@ -144,7 +129,7 @@
 *** Highlight the line where the cursor lies.
 
 #+BEGIN_SRC emacs-lisp
-  (add-hook 'c-mode-hook 'c++-mode-hook (lambda () (hl-line-mode 0)))
+  (add-hook 'c-mode-hook 'hl-line-mode)
 #+END_SRC
 
 *** Change the default font.
@@ -220,8 +205,8 @@
     :config
     (setq calendar-latitude 27.0)
     (setq calendar-longitude 85.0)
-    (setq circadian-themes '((:sunrise . adwaita)
-                             (:sunset  . ample)))
+    (setq circadian-themes '((:sunset  . gruvbox-dark-hard)
+                             (:sunrise . gruvbox-light-hard)))
     (circadian-setup))
 #+END_SRC
 
@@ -261,6 +246,21 @@
   ;  (enable-elpy)
   ;  (setq elpy-rpc-python-command "python3")
   ;  (setq python-shell-interpreter "python3")
+#+END_SRC
+
+* Evil
+
+** Vim keybindings simulator?
+#+BEGIN_SRC emacs-lisp
+  (use-package evil
+    :ensure t
+    :init
+    (evil-mode 1)
+    :config
+    (setq evil-default-cursor (quote (t "#750000"))
+      evil-visual-state-cursor '("#880000" box)
+      evil-normal-state-cursor '("#750000" box)
+      evil-insert-state-cursor '("#e2e222" box)))
 #+END_SRC
 
 * Fly
@@ -349,6 +349,20 @@
         (add-hook 'css-mode-hook 'rainbow-mode))
 #+End_SRC
  
+* Spaceline  
+ 
+** Modeline theme.
+#+BEGIN_SRC emacs-lisp
+  ;; (use-package spaceline
+  ;;     :ensure t
+  ;;     :config
+  ;;     (require 'spaceline-config)
+  ;;     (spaceline-spacemacs-theme)
+  ;;     (spaceline-helm-mode)
+  ;;     (setq powerline-default-separator 'wave)
+  ;;     (spaceline-compile))
+#+END_SRC
+
 * Xscope
 
 ** For navigation of source code and it's implementation.
