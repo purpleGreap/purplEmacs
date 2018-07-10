@@ -72,14 +72,14 @@
   :bind
   ("M-s" . avy-goto-char))
 
-(use-package circadian
-  :ensure t
-  :config
-  (setq calendar-latitude 27.0)
-  (setq calendar-longitude 85.0)
-  (setq circadian-themes '((:sunset  . gruvbox-dark-hard)
-                           (:sunrise . gruvbox-light-hard)))
-  (circadian-setup))
+;; (use-package circadian
+;;   :ensure t
+;;   :config
+;;   (setq calendar-latitude 27.0)
+;;   (setq calendar-longitude 85.0)
+;;   (setq circadian-themes '((:sunset  . gruvbox-dark-hard)
+;;                            (:sunrise . gruvbox-light-hard)))
+;;   (circadian-setup))
 
 (use-package company
   :ensure t

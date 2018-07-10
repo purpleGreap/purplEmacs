@@ -20,9 +20,9 @@
 (package-initialize)
 
 ;; Install theme package
-(unless (package-installed-p 'gruvbox-theme)
+(unless (package-installed-p 'darktooth-theme)
   (package-refresh-contents)
-  (package-install 'gruvbox-theme))
+  (package-install 'darktooth-theme))
 
 ;; Install use-package to simplify code
 (unless (package-installed-p 'use-package)
