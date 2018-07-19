@@ -20,9 +20,9 @@
 (package-initialize)
 
 ;; Install theme package
-(unless (package-installed-p 'darktooth-theme)
+(unless (package-installed-p 'spacemacs-theme)
   (package-refresh-contents)
-  (package-install 'darktooth-theme))
+  (package-install 'spacemacs-theme))
 
 ;; Install use-package to simplify code
 (unless (package-installed-p 'use-package)

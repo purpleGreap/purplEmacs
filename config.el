@@ -72,14 +72,14 @@
   :bind
   ("M-s" . avy-goto-char))
 
-;; (use-package circadian
-;;   :ensure t
-;;   :config
-;;   (setq calendar-latitude 27.0)
-;;   (setq calendar-longitude 85.0)
-;;   (setq circadian-themes '((:sunset  . gruvbox-dark-hard)
-;;                            (:sunrise . gruvbox-light-hard)))
-;;   (circadian-setup))
+(use-package circadian
+  :ensure t
+  :config
+  (setq calendar-latitude 27.0)
+  (setq calendar-longitude 85.0)
+  (setq circadian-themes '((:sunset  . spacemacs-dark)
+                           (:sunrise . spacemacs-light)))
+  (circadian-setup))
 
 (use-package company
   :ensure t
@@ -108,9 +108,9 @@
   (evil-mode 1)
   :config
   (setq evil-default-cursor (quote (t "#750000"))
-    evil-visual-state-cursor '("#880000" box)
-    evil-normal-state-cursor '("#750000" box)
-    evil-insert-state-cursor '("#e2e222" box)))
+        evil-visual-state-cursor '("#880000" box)
+        evil-normal-state-cursor '("#750000" box)
+        evil-insert-state-cursor '("#e2e222" box)))
 
 (use-package flycheck
   :ensure t
@@ -146,7 +146,7 @@
 (use-package org
   :ensure t
   :init 
-  (setq org-src-window-setup 'current-window)
+  ;; (setq org-src-window-setup 'current-window)
   (add-hook 'org-mode-hook 'org-indent-mode))
 
 (use-package org-bullets
@@ -160,14 +160,14 @@
   (add-hook 'emacs-lisp-mode-hook 'rainbow-mode)
   (add-hook 'css-mode-hook 'rainbow-mode))
 
-;; (use-package spaceline
-;;     :ensure t
-;;     :config
-;;     (require 'spaceline-config)
-;;     (spaceline-spacemacs-theme)
-;;     (spaceline-helm-mode)
-;;     (setq powerline-default-separator 'wave)
-;;     (spaceline-compile))
+(use-package spaceline
+    :ensure t
+    :config
+    (require 'spaceline-config)
+    (spaceline-spacemacs-theme)
+    (spaceline-helm-mode)
+    (setq powerline-default-separator 'wave)
+    (spaceline-compile))
 
 (use-package xcscope
   :ensure t
