@@ -163,6 +163,10 @@
   (global-set-key (kbd "C-,") 'recompile)
 #+END_SRC
 
+*** Using esc instead of c-g 
+#+BEGIN_SRC emacs-lisp
+  (define-key key-translation-map (kbd "ESC") (kbd "C-g"))
+#+END_SRC
 *** Automatic indentation
 #+BEGIN_SRC emacs-lisp
   (defun programming-kbd-config ()
@@ -194,20 +198,6 @@
     :ensure t
     :bind
     ("M-s" . avy-goto-char))
-#+END_SRC
-
-* Circadian
-
-** Changes theme based on sunset and sunrise.
-#+BEGIN_SRC emacs-lisp
-  (use-package circadian
-    :ensure t
-    :config
-    (setq calendar-latitude 27.0)
-    (setq calendar-longitude 85.0)
-    (setq circadian-themes '((:sunset  . spacemacs-dark)
-                             (:sunrise . spacemacs-light)))
-    (circadian-setup))
 #+END_SRC
 
 * Company
@@ -257,9 +247,9 @@
     :init
     (evil-mode 1)
     :config
-    (setq evil-default-cursor (quote (t "#750000"))
-          evil-visual-state-cursor '("#880000" box)
-          evil-normal-state-cursor '("#750000" box)
+    (setq evil-default-cursor (quote (t "#4a5af6"))
+          evil-visual-state-cursor '("#ff2e33" box)
+          evil-normal-state-cursor '("#4a5af6" box)
           evil-insert-state-cursor '("#e2e222" box)))
 #+END_SRC
 
@@ -326,7 +316,7 @@
   (use-package org
     :ensure t
     :init 
-    ;; (setq org-src-window-setup 'current-window)
+    (setq org-src-window-setup 'current-window)
     (add-hook 'org-mode-hook 'org-indent-mode))
 
   (use-package org-bullets
@@ -349,19 +339,27 @@
         (add-hook 'css-mode-hook 'rainbow-mode))
 #+End_SRC
  
-* Spaceline  
- 
-** Modeline theme.
+* Theme
+
+** Doom theme for emacs
+
 #+BEGIN_SRC emacs-lisp
-  (use-package spaceline
-      :ensure t
-      :config
-      (require 'spaceline-config)
-      (spaceline-spacemacs-theme)
-      (spaceline-helm-mode)
-      (setq powerline-default-separator 'wave)
-      (spaceline-compile))
+  (use-package doom-modeline
+        :ensure t
+        :defer t
+        :hook (after-init . doom-modeline-init))
 #+END_SRC
+
+* Vim-Fringe
+
+** Shows vi's tilde fringe.
+
+#+BEGIN_SRC emacs-lisp
+  (use-package vi-tilde-fringe
+    :ensure t
+    :config
+     (global-vi-tilde-fringe-mode 1))
+#+END_SRC 
 
 * Xscope
 

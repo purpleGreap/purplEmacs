@@ -19,11 +19,6 @@
 ;; Makes sure all the packages are loaded
 (package-initialize)
 
-;; Install theme package
-(unless (package-installed-p 'spacemacs-theme)
-  (package-refresh-contents)
-  (package-install 'spacemacs-theme))
-
 ;; Install use-package to simplify code
 (unless (package-installed-p 'use-package)
   (package-refresh-contents)

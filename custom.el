@@ -18,13 +18,14 @@
  ;; If there is more than one, they won't work right.
  '(ansi-color-names-vector
    ["#26292c" "#ff4a52" "#40b83e" "#f6f080" "#afc4db" "#dc8cc3" "#93e0e3" "#f8f8f8"])
+ '(custom-enabled-themes (quote (doom-one)))
  '(custom-safe-themes
    (quote
-    ("bffa9739ce0752a37d9b1eee78fc00ba159748f50dc328af4be661484848e476" "cbe892ce669f001193ccbb3b50a6fa402fe2560b3fe802354d73aeb0710a1c63" "c90fd1c669f260120d32ddd20168343f5c717ca69e95d2f805e42e88430c340e" default)))
+    ("9d9fda57c476672acd8c6efeb9dc801abea906634575ad2c7688d055878e69d6" "a566448baba25f48e1833d86807b77876a899fc0c3d33394094cf267c970749f" "bffa9739ce0752a37d9b1eee78fc00ba159748f50dc328af4be661484848e476" "cbe892ce669f001193ccbb3b50a6fa402fe2560b3fe802354d73aeb0710a1c63" "c90fd1c669f260120d32ddd20168343f5c717ca69e95d2f805e42e88430c340e" default)))
  '(fci-rule-color "#202325")
  '(package-selected-packages
    (quote
-    (flatland-theme use-package spacemacs-theme rainbow-mode org-bullets mark-multiple helm-cscope flycheck evil darktooth-theme company circadian avy)))
+    (evil-fringe-mark doom-modeline doom-themes vi-tilde-fringe spaceline helm flatland-theme use-package spacemacs-theme rainbow-mode org-bullets mark-multiple helm-cscope flycheck evil darktooth-theme company circadian avy)))
  '(pos-tip-background-color "#36473A")
  '(pos-tip-foreground-color "#FFFFC8")
  '(vc-annotate-background "#1f2124")
