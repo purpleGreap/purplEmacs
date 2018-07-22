@@ -29,7 +29,7 @@
 
 (global-set-key (kbd "C--") 'ansi-term)
 
-(global-set-key (kbd "C-;") 'other-window)
+;; (global-set-key (kbd "C-;") 'other-window)
 
 (global-set-key (kbd "M-d") 'kill-whole-word)
 
@@ -57,15 +57,12 @@
 
 (global-set-key (kbd "C-,") 'recompile)
 
+(define-key key-translation-map (kbd "ESC") (kbd "C-g"))
+
 (defun programming-kbd-config ()
 (global-set-key (kbd "RET") 'newline-and-indent))
 
 (add-hook 'c-mode-hook 'programming-kbd-config)
-
-(defvar my-term-shell "/bin/bash")
-(defadvice ansi-term (before force-bash)
-  (interactive (list my-term-shell)))
-(ad-activate 'ansi-term)
 
 (use-package avy
   :ensure t
@@ -85,6 +82,18 @@
   (define-key company-active-map (kbd "M-p") nil)
   (define-key company-active-map (kbd "C-n") #'company-select-next)
   (define-key company-active-map (kbd "C-p") #'company-select-previous))
+
+(use-package dashboard
+  :ensure t
+  :config
+  (dashboard-setup-startup-hook)
+  (setq dashboard-banner-logo-title "ようこそ!")
+  (setq dashboard-startup-banner "/home/greap/.emacs.d/lala.png")
+  (setq dashboard-items '((recents  . 5)
+                          (bookmarks . 5)
+                          (projects . 5)
+                          (agenda . 5)
+                          (registers . 5))))
 
 ;(use-package elpy
 ;  :ensure t
