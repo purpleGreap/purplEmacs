@@ -19,4 +19,7 @@
  '(custom-enabled-themes (quote (doom-city-lights)))
  '(custom-safe-themes
    (quote
-    ("a566448baba25f48e1833d86807b77876a899fc0c3d33394094cf267c970749f" default))))
+    ("a566448baba25f48e1833d86807b77876a899fc0c3d33394094cf267c970749f" default)))
+ '(package-selected-packages
+   (quote
+    (vi-tilde-fringe use-package rainbow-mode org-bullets mark-multiple helm-cscope flycheck evil-tutor doom-themes doom-modeline dashboard company avy))))

@@ -182,7 +182,7 @@
 
 #+BEGIN_SRC emacs-lisp
   (use-package avy
-    :ensure t
+    :defer t
     :bind
     ("M-s" . avy-goto-char))
 #+END_SRC
@@ -196,7 +196,7 @@
 
 #+BEGIN_SRC emacs-lisp
   (use-package company
-    :ensure t
+    :defer t
     :init
     (add-hook 'emacs-lisp-mode-hook 'company-mode)
     (add-hook 'c-mode-hook 'company-mode)
@@ -219,12 +219,13 @@
     :config
     (dashboard-setup-startup-hook)
     (setq dashboard-banner-logo-title "ようこそ!")
-    (setq dashboard-startup-banner "/home/greap/.emacs.d/lala.png")
+    (setq dashboard-startup-banner "/home/greap/.emacs.d/dashboard.png")
     (setq dashboard-items '((recents  . 5)
                             (bookmarks . 5)
                             (projects . 5)
                             (agenda . 5)
                             (registers . 5))))
+
 #+END_SRC
 
 * Elpy
@@ -235,7 +236,7 @@
 
 #+BEGIN_SRC emacs-lisp
   ;(use-package elpy
-  ;  :ensure t
+  ;  :defer t
   ;  :config
   ;  (enable-elpy)
   ;  (setq elpy-rpc-python-command "python3")
@@ -247,7 +248,7 @@
 ** Vim keybindings simulator?
 #+BEGIN_SRC emacs-lisp
   (use-package evil
-    :ensure t
+    :defer t 
     :init
     (evil-mode 1)
     :config
@@ -262,7 +263,7 @@
 ** Used for checking syntax errors.
 #+BEGIN_SRC emacs-lisp
   (use-package flycheck
-    :ensure t
+    :defer t
     :init
     (add-hook 'c-mode-hook 'flycheck-mode)
     (add-hook 'c++-mode-hook 'flycheck-mode)
@@ -279,23 +280,23 @@
 - Overwrite's some shortcuts as seen below.
 
 #+BEGIN_SRC emacs-lisp
-  (use-package helm
-    :ensure t
-    :config
-    (setq helm-split-window-inside-p t)
-    (helm-autoresize-mode t)
-    (define-key helm-map (kbd "<tab>") 'helm-execute-persistent-action)
-    (define-key helm-map (kbd "M-<backspace>") 'helm-find-files-up-one-level)
-    (global-set-key (kbd "C-x b") 'helm-buffers-list)
-    (global-set-key (kbd "C-=") 'helm-bookmarks)
-    (global-set-key (kbd "M-x") 'helm-M-x)
-    (global-set-key (kbd "M-y") 'helm-show-kill-ring)
-    (global-set-key (kbd "C-s") 'helm-occur)
-    (global-set-key (kbd "C-x C-f") 'helm-find-files))
+  ;; (use-package helm
+  ;;   :defer t
+  ;;   :config
+  ;;   (setq helm-split-window-inside-p t)
+  ;;   (helm-autoresize-mode t)
+  ;;   (define-key helm-map (kbd "<tab>") 'helm-execute-persistent-action)
+  ;;   (define-key helm-map (kbd "M-<backspace>") 'helm-find-files-up-one-level)
+  ;;   (global-set-key (kbd "C-x b") 'helm-buffers-list)
+  ;;   (global-set-key (kbd "C-=") 'helm-bookmarks)
+  ;;   (global-set-key (kbd "M-x") 'helm-M-x)
+  ;;   (global-set-key (kbd "M-y") 'helm-show-kill-ring)
+  ;;   (global-set-key (kbd "C-s") 'helm-occur)
+  ;;   (global-set-key (kbd "C-x C-f") 'helm-find-files))
 
-  (use-package helm-cscope
-    :ensure t
-    )
+  ;; (use-package helm-cscope
+  ;;   :defer t
+  ;;   )
 #+END_SRC
 
 * Mark-multiple
@@ -303,10 +304,10 @@
 ** Helps to mark the same type of string and edit them at once.
 
 #+BEGIN_SRC emacs-lisp
-  (use-package mark-multiple
-    :ensure t
-    :bind
-    ("C-'" . 'mark-next-like-this))
+  ;; (use-package mark-multiple
+  ;;   :defer t
+  ;;   :bind
+  ;;   ("C-'" . 'mark-next-like-this))
 #+END_SRC
 
 * Org
@@ -318,16 +319,25 @@
 
 #+BEGIN_SRC emacs-lisp
   (use-package org
-    :ensure t
+    :defer t
     :init 
     (setq org-src-window-setup 'current-window)
     (add-hook 'org-mode-hook 'org-indent-mode))
 
   (use-package org-bullets
-    :ensure t
+    :defer t
     :config
     (add-hook 'org-mode-hook '(lambda () (org-bullets-mode))))
 #+END_SRC
+
+* Projectile
+
+** For managing projects
+#+BEGIN_SRC emacs-lisp
+  (use-package projectile
+    :defer t
+    )
+#+END_SRC 
 
 * Rainbow
 
@@ -337,7 +347,7 @@
 
 #+BEGIN_SRC emacs-lisp
       (use-package rainbow-mode
-        :ensure t
+        :defer t
         :config
         (add-hook 'emacs-lisp-mode-hook 'rainbow-mode)
         (add-hook 'css-mode-hook 'rainbow-mode))
@@ -349,7 +359,6 @@
 
 #+BEGIN_SRC emacs-lisp
   (use-package doom-modeline
-        :ensure t
         :defer t
         :hook (after-init . doom-modeline-init))
 #+END_SRC
@@ -371,7 +380,7 @@
 
 #+BEGIN_SRC emacs-lisp
   (use-package xcscope
-    :ensure t
+    :defer t
     :bind
     ("C-<f5>" . cscope-find-this-symbol)
     ("C-<f1>" . cscope-display-buffer-toggle)
